@@ -1,0 +1,60 @@
+#!/usr/bin/perl
+use strict;
+use warnings;
+#use Data::Dumper;
+use Getopt::Std;
+use JSON::Parse 'parse_json';
+use REST::Client;
+
+# Global Vars, Get Opts
+my %opts;
+getopt('ucb', \%opts);
+my $user = $opts{u};
+my $client_id = $opts{c};
+my $bearer_file = $opts{b};
+
+#get bearer token
+my $bearer;
+open(FH, '<', $bearer_file) or die $!;
+while(<FH>){
+   # This strange string concatination is for the authorization header
+   $bearer = "Bearer " . $_;
+}
+close(FH);
+
+# perform REST Call
+my $rest = REST::Client->new(
+  timeout => 5
+);
+$rest->GET("https://api.twitch.tv/helix/streams?user_login=$user", {'client-id' => $client_id, 'Authorization' => $bearer});
+
+# error checking
+if ($rest->responseCode() eq "200") {
+  parse_api_response($rest);
+} else {
+  my $json = parse_json($rest->responseContent());
+  print "Error while getting information from API-endpoint. Error: "
+    . $json->{status}
+    . " "
+    . $json->{error}
+    . " - "
+    . $json->{message};
+}
+
+# parse api response if everything is fine (http code 200)
+sub parse_api_response {
+  my $rest = shift;
+  my $json = parse_json($rest->responseContent)->{data}->[0];
+
+  if (defined($json)) {
+    my $title = $json->{title};
+    $title =~ tr/"|//d;
+    my $viewer_count = $json->{viewer_count};
+    my $game = $json->{game_name};
+    print "$json->{user_name} ist live!\n\nhttps://twitch.tv/$user\nTitel: $title\nGame: $game" . " | viewer=$viewer_count";
+    exit 2;
+  } else {
+    print "OK - User not live | viewer=0";
+    exit 0;
+  };
+}
