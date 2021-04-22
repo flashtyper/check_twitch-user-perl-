@@ -51,7 +51,7 @@ sub parse_api_response {
     $title =~ tr/"|//d;
     my $viewer_count = $json->{viewer_count};
     my $game = $json->{game_name};
-    print "$json->{user_name} ist live!\n\nhttps://twitch.tv/$user\nTitel: $title\nGame: $game" . " | viewer=$viewer_count";
+    print "$json->{user_name} is live!\n\nhttps://twitch.tv/$user\nTitel: $title\nGame: $game" . " | viewer=$viewer_count";
     exit 2;
   } else {
     print "OK - User not live | viewer=0";
