@@ -13,7 +13,7 @@ curl -s --location --request GET 'https://api.twitch.tv/helix/users?login=<accou
 
 Output if a user is live: 
 ```
-Asmongold ist live!
+Asmongold is live!
 
 https://twitch.tv/asmongold
 Titel: TBC TOURNAMENT PLANNING--HUGE 9.1 UPDATES--MOUNT TODAY 100%--GOING OVER PATCH NOTES--MAYBE A MOUNT OFF??
