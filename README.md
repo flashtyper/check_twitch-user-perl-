@@ -3,11 +3,13 @@ small icinga/nagios script to check if a twitch user is live
 
 Usage: 
 ```./check_twitch-user -u [twitchuser]-c [API Client ID] -b [full path to bearer token]```
+
 Example:
 ```./check_twitch-user -u asmongold-c abcdefghijklmnopqrdtuvwqyz1234567890 -b /home/user/twitch/token```
 
 ```[twitchuser]```:
 This is the login name of a twitchuser which you can easily get by (for example): 
+
 ```
 curl -s --location --request GET 'https://api.twitch.tv/helix/users?login=<account name>' --header 'client-id: <client id>' --header 'Authorization: Bearer <token>'
 ```
