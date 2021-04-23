@@ -27,6 +27,7 @@ object Service "Asmongold" {
 ```
 
 ## Output
+If a streamer is live: 
 ```
 Asmongold is live!
 
@@ -34,6 +35,7 @@ https://twitch.tv/asmongold
 Titel: TBC TOURNAMENT PLANNING--HUGE 9.1 UPDATES--MOUNT TODAY 100%--GOING OVER PATCH NOTES--MAYBE A MOUNT OFF??
 Game: World of Warcraft | viewer=38384
 ```
+If a streamer is not live: 
 ```
 OK - User not live | viewer=0
 ```
