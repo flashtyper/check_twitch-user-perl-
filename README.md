@@ -7,6 +7,12 @@ small icinga/nagios script to check if a twitch user is live
 ./check_twitch-user -u <twitchuser> -c <Twitch API Client ID> -b <full path to bearer token>
 ```
 
+## Example:
+
+```bash
+./check_twitch-user -u asmongold -c abcdefghijklmnopqrdtuvwqyz1234567890 -b /path/to/twitch/bearer/token
+```
+
 ## Installation:
 Just move the file into your plugin directory and add a new command and service to your icinga configuration. Don't forget to grant execution permissions. 
 Maybe something like this: 
@@ -40,12 +46,6 @@ Game: World of Warcraft | viewer=38384
 If a streamer is not live: 
 ```
 OK - User not live | viewer=0
-```
-
-## Example:
-
-```bash
-./check_twitch-user -u asmongold -c abcdefghijklmnopqrdtuvwqyz1234567890 -b /path/to/twitch/bearer/token
 ```
 
 ## Get streamers login name
