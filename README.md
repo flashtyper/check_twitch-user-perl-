@@ -45,7 +45,7 @@ OK - User not live | viewer=0
 ## Example:
 
 ```bash
-./check_twitch-user -u asmongold-c abcdefghijklmnopqrdtuvwqyz1234567890 -b /path/to/twitch/bearer/token
+./check_twitch-user -u asmongold -c abcdefghijklmnopqrdtuvwqyz1234567890 -b /path/to/twitch/bearer/token
 ```
 
 ## Get streamers login name
